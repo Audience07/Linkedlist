@@ -109,7 +109,7 @@ DWORD Linkedlist<T_ELE>::Insert(IN const T_ELE& Element) {
 	//链表长度加一
 	m_dwLenth++;
 
-	return SUCCESS
+	return SUCCESS;
 }
 
 
@@ -155,6 +155,23 @@ DWORD Linkedlist<T_ELE>::GetElementIndex(const IN T_ELE& Element) {
 template<class T_ELE>
 DWORD Linkedlist<T_ELE>::Insert(IN DWORD dwIndex, IN const T_ELE& Element) {
 	PNODE p = m_pList;
+	//如果插入的是第一个,且指定索引为0的话,则直接插入,如果容器里还没有数据,想插入索引为非0则返回错误的索引值
+	if (!m_dwLenth || !m_pList) {
+		if (dwIndex) {
+			return INDEX_IS_ERROR;
+		}
+		this->Insert(Element);
+		return SUCCESS;
+	}
+	if (!dwIndex) {
+		PNODE Temp = new NODE{};
+		memcpy(&Temp->Data, &Element, sizeof(T_ELE));
+		Temp->pNext = m_pList;
+		m_pList = Temp;
+		return SUCCESS;
+	}
+
+
 	//如果越界，返回错误的索引值
 	if (dwIndex > m_dwLenth || dwIndex < 0) {
 		return INDEX_IS_ERROR;

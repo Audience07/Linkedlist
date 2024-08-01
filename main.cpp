@@ -6,7 +6,7 @@ int main() {
 	int a;
 	L1->Insert(0x10);
 	L1->Insert(0x11);
-	L1->Insert(0x12);
+	L1->Insert(0,0x12);
 	L1->Insert(0x13);
 	L1->Insert(0x14);
 	L1->GetElement(3, a);
