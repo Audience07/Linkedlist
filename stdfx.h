@@ -121,11 +121,11 @@ DWORD Linkedlist<T_ELE>::GetElement(IN DWORD dwIndex, OUT T_ELE& Element) {
 	}
 	//如果是链表中最后一个数，则根据m_pList_END返回数据
 	if (dwIndex == m_dwLenth-1) {
-		Element = m_pList_END->Data;
+		memcpy(&Element, &m_pList->Data, sizeof(T_ELE));
 		return SUCCESS;
 	}
 	//循环查找
-	while (dwIndex + 1) {
+	while (dwIndex) {
 		p = p->pNext;
 		dwIndex--;
 	}
@@ -193,16 +193,17 @@ DWORD Linkedlist<T_ELE>::Delete(IN DWORD dwIndex) {
 		return INDEX_IS_ERROR;
 	}
 	//找到指定索引的上一个索引值
-	while (dwIndex--) {
+	while (dwIndex-1) {
 		pl = pl->pNext;
+		dwIndex--;
 	}
 	//找到指定索引值的下一个索引，并保存地址
 	PNODE p = pl->pNext;
 	DWORD tempr = (DWORD)p->pNext;
 	//释放指定索引的内存
-	delete p->pNext;
+	delete pl->pNext;
 	//将下一个索引指向下下个
-	p->pNext = (PNODE)tempr;
+	pl->pNext = (PNODE)tempr;
 	//长度减一
 	m_dwLenth--;
 	return SUCCESS;
