@@ -108,6 +108,8 @@ DWORD Linkedlist<T_ELE>::Insert(IN const T_ELE& Element) {
 	memcpy(&m_pList_END->Data, &Element, sizeof(T_ELE));
 	//链表长度加一
 	m_dwLenth++;
+
+	return SUCCESS
 }
 
 
