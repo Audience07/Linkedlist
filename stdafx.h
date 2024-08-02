@@ -27,8 +27,8 @@ private:
 		T_ELE Data;				//数据
 		_NODE* pNext;			//下一个结构的指针
 	}NODE,*PNODE;
-	/*PNODE GetIndexCurrentNode(DWORD dwIndex);					
-	PNODE GetIndexPreviousNode(DWORD dwIndex);
+	/*PNODE GetIndexPreviousNode(DWORD dwIndex);
+	PNODE GetIndexCurrentNode(DWORD dwIndex);					
 	PNODE GetIndexNextNode(DWORD dwIndex);*/
 
 
