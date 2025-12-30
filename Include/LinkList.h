@@ -71,6 +71,7 @@ VOID Linkedlist<T_ELE>::Clear() {
 	{
 		//将指针指向下一个元素，然后将当前内存释放
 		temp = p;
+		if (!p->Data) break;
 		p = p->pNext;
 		delete temp;
 	}
@@ -230,7 +231,7 @@ DWORD Linkedlist<T_ELE>::Delete(IN DWORD dwIndex) {
 
 }
 
-
+//获取链表长度
 template <class T_ELE>
 DWORD Linkedlist<T_ELE>::GetSize() {
 	return m_dwLenth;
